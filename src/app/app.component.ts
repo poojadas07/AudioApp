@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +23,9 @@ export class AppComponent {
     "loadstart"
   ];
 
-  currentTime = 0;
-  duration = 0;
-
+  currentTime = '00:00:00';
+  duration = '00:00:00';
+  seek = 0;
 
   files = [
     {
@@ -50,8 +51,9 @@ export class AppComponent {
 
       const handler = (event: Event) => {
         console.log(event);
-        this.currentTime = this.audioObj.currentTime;
-        this.duration = this.audioObj.duration;
+        
+        this.currentTime = this.timeFormat(this.audioObj.currentTime);
+        this.duration = this.timeFormat(this.audioObj.duration);
       }
 
       this.addEvent(this.audioObj , this.audioEvents , handler);
@@ -97,5 +99,10 @@ export class AppComponent {
     this.audioObj.pause();
     this.audioObj.currentTime = 0;
     console.log("Clicked stop");
+  }
+
+  timeFormat(time , format="HH:mm:ss"){
+    const momentTime = time * 1000;
+    return moment.utc(momentTime).format(format);
   }
 }
