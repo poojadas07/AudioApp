@@ -26,18 +26,24 @@ export class AppComponent {
   ] ;
 
   openFile(url){
-    
+    this.audioObj.src = url;
+    this.audioObj.load();
+    this.audioObj.play();
   }
 
   play(){
+    this.audioObj.play();
     console.log("Clicked Play");
   }
 
   pause(){
+    this.audioObj.pause();
     console.log("Clicked Pause");
   }
 
   stop(){
+    this.audioObj.pause();
+    this.audioObj.currentTime = 0;
     console.log("Clicked stop");
   }
 }
