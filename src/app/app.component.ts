@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,21 @@ export class AppComponent {
   title = 'AudioApp'; 
 
   audioObj = new Audio();
+  audioEvents = [
+    "ended",
+    "error",
+    "play",
+    "playing",
+    "pause",
+    "timeupdate",
+    "canplay",
+    "loadedmetadata",
+    "loadstart"
+  ];
+
+  currentTime = 0;
+  duration = 0;
+
 
   files = [
     {
@@ -25,10 +41,46 @@ export class AppComponent {
     }
   ] ;
 
+  streamObserver(url){
+    return new Observable(observer => {
+
+      this.audioObj.src = url;
+      this.audioObj.load();
+      this.audioObj.play();
+
+      const handler = (event: Event) => {
+        console.log(event);
+        this.currentTime = this.audioObj.currentTime;
+        this.duration = this.audioObj.duration;
+      }
+
+      this.addEvent(this.audioObj , this.audioEvents , handler);
+
+      return () => {
+        this.audioObj.pause();
+        this.audioObj.currentTime = 0;
+      }
+    });
+  }
+
+  addEvent(obj , events , handler){
+    events.forEach(event => {
+      obj.addEventListener(event , handler);
+    });
+  }
+
+  removeEvent(obj , events , handler){
+
+  }
+
   openFile(url){
-    this.audioObj.src = url;
-    this.audioObj.load();
-    this.audioObj.play();
+    this.streamObserver(url).subscribe(event => {});
+    console.log(url);
+  }
+
+  setVolume(eve){
+    this.audioObj.volume = eve.target.value;
+    console.log(eve.target.value);
   }
 
   play(){
