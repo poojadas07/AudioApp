@@ -11,7 +11,7 @@
 
 <div>
     <span>{{currentTime}}</span>
-    <input type="range" min="0" max="{{currentTime}}" value="0">
+    <input type="range" min="0" max="{{currentTime}}" [value]="seek">
 
     <span>{{duration}}</span>
 </div>
