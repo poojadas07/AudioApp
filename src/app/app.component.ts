@@ -50,7 +50,7 @@ export class AppComponent {
       this.audioObj.play();
 
       const handler = (event: Event) => {
-        console.log(event);
+        // console.log(event);
         this.seek = this.audioObj.currentTime;
         this.currentTime = this.timeFormat(this.audioObj.currentTime);
         this.duration = this.timeFormat(this.audioObj.duration);
@@ -61,6 +61,8 @@ export class AppComponent {
       return () => {
         this.audioObj.pause();
         this.audioObj.currentTime = 0;
+
+        this.removeEvent(this.audioObj , this.audioEvents , handler);
       }
     });
   }
@@ -72,33 +74,39 @@ export class AppComponent {
   }
 
   removeEvent(obj , events , handler){
+    events.forEach(event => {
+      obj.removeEventListener(event , handler);
+    });
+  }
 
+  setSeekTo(eve){
+    this.audioObj.currentTime = eve.target.value;
   }
 
   openFile(url){
     this.streamObserver(url).subscribe(event => {});
-    console.log(url);
+    // console.log(url);
   }
 
   setVolume(eve){
     this.audioObj.volume = eve.target.value;
-    console.log(eve.target.value);
+    // console.log(eve.target.value);
   }
 
   play(){
     this.audioObj.play();
-    console.log("Clicked Play");
+    // console.log("Clicked Play");
   }
 
   pause(){
     this.audioObj.pause();
-    console.log("Clicked Pause");
+    // console.log("Clicked Pause");
   }
 
   stop(){
     this.audioObj.pause();
     this.audioObj.currentTime = 0;
-    console.log("Clicked stop");
+    // console.log("Clicked stop");
   }
 
   timeFormat(time, format="HH:mm:ss"){
