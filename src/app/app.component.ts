@@ -39,6 +39,10 @@ export class AppComponent {
     {
       url : './assets/song3.mp3',
       name : 'Song 3'
+    },
+    {
+      url : './assets/song4.mp3',
+      name : 'Song 4'
     }
   ] ;
 
