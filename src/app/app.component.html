@@ -20,16 +20,17 @@
     <br>
 </div>
 
-<footer class="page-footer fixed-bottom pink text-center">
+<footer class="page-footer fixed-bottom pink text-center" style="height: 30vh;">
   
-    <div>
+    <div class="pt-5">
         <button type="button" class="btn btn-danger" (click)="play()"><i class="fas fa-play"></i></button>
         <button type="button" class="btn btn-danger" (click)="pause()"><i class="fas fa-pause"></i></button>
         <button type="button" class="btn btn-danger" (click)="stop()"><i class="fas fa-stop"></i></button>
+
         <input type="range" min="0" max="{{currentTime}}" [value]="seek" (input)="setSeekTo($event)" style="width: 89vw;">
-       
         <span class="pt-3" style="float: left;">{{currentTime}}</span>
         <span class="pt-3" style="float: right;">{{duration}}</span>
+        
     </div>
   
 </footer>
