@@ -11,7 +11,7 @@
 
 <div>
     <span>{{currentTime}}</span>
-    <input type="range" min="0" max="{{currentTime}}" [value]="seek">
+    <input type="range" min="0" max="{{currentTime}}" [value]="seek" (input)="setSeekTo($event)">
 
     <span>{{duration}}</span>
 </div>
