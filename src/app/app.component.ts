@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +10,6 @@ import * as moment from 'moment';
 })
 export class AppComponent {
   title = 'AudioApp'; 
-
   audioObj = new Audio();
   audioEvents = [
     "ended",
@@ -88,6 +88,7 @@ export class AppComponent {
   }
 
   openFile(url){
+    this.play(url);
     this.streamObserver(url).subscribe(event => {});
     // console.log(url);
   }
@@ -97,17 +98,17 @@ export class AppComponent {
     // console.log(eve.target.value);
   }
 
-  play(){
+  play(url){
     this.audioObj.play();
     // console.log("Clicked Play");
   }
 
-  pause(){
+  pause(url){
     this.audioObj.pause();
     // console.log("Clicked Pause");
   }
 
-  stop(){
+  stop(url){
     this.audioObj.pause();
     this.audioObj.currentTime = 0;
     // console.log("Clicked stop");
@@ -118,4 +119,5 @@ export class AppComponent {
     return moment.utc(momentTime).format(format);
   }
   
+
 }
