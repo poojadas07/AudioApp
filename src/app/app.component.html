@@ -11,26 +11,26 @@
 
 </header>
 
-<div class="container-fluid m-auto pt-5 text-center">
-    <div class="row">
-        <div class="col-3" *ngFor="let file of files" (click)="openFile(file.url)">
-            {{file.name}}
-        </div>
+
+<div class="container-fluid m-auto pt-5">
+    <div class="col-12 p-5" *ngFor="let file of files" (click)="openFile(file.url)">
+        {{file.name}}
     </div>
     <br>
 </div>
 
-<footer class="page-footer fixed-bottom pink text-center" style="height: 30vh;">
+<footer class="page-footer pink text-center" style="height: 30vh;">
   
     <div class="pt-5">
-        <button type="button" class="btn btn-danger" (click)="play()"><i class="fas fa-play"></i></button>
-        <button type="button" class="btn btn-danger" (click)="pause()"><i class="fas fa-pause"></i></button>
-        <button type="button" class="btn btn-danger" (click)="stop()"><i class="fas fa-stop"></i></button>
+        <button type="button" class="btn btn-secondary" (click)="play()"><i class="fas fa-play"></i></button>
+        <button type="button" class="btn btn-secondary" (click)="pause()"><i class="fas fa-pause"></i></button>
+        <button type="button" class="btn btn-secondary" (click)="stop()"><i class="fas fa-stop"></i></button>
+        <br><br>
 
         <input type="range" min="0" max="{{currentTime}}" [value]="seek" (input)="setSeekTo($event)" style="width: 89vw;">
         <span class="pt-3" style="float: left;">{{currentTime}}</span>
         <span class="pt-3" style="float: right;">{{duration}}</span>
-        
+
     </div>
   
 </footer>
