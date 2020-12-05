@@ -88,7 +88,6 @@ export class AppComponent {
   }
 
   openFile(url){
-    this.play(url);
     this.streamObserver(url).subscribe(event => {});
     // console.log(url);
   }
@@ -98,17 +97,17 @@ export class AppComponent {
     // console.log(eve.target.value);
   }
 
-  play(url){
+  play(){
     this.audioObj.play();
     // console.log("Clicked Play");
   }
 
-  pause(url){
+  pause(){
     this.audioObj.pause();
     // console.log("Clicked Pause");
   }
 
-  stop(url){
+  stop(){
     this.audioObj.pause();
     this.audioObj.currentTime = 0;
     // console.log("Clicked stop");
