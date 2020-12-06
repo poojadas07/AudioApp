@@ -14,7 +14,7 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   searchMusic(searchTerm: string , type='artist'){
-    this.searchUrl = 'https://api.spotify.com/v1/search?query='+ searchTerm+'&offset=0&limit=20&type='+type;
+    this.searchUrl = ''+ searchTerm+'&offset=0&limit=20&type='+type;
     return this.http.get(this.searchUrl).pipe(map((res:any) => res.json()));
 }
 
