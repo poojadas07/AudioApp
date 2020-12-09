@@ -99,7 +99,7 @@ export class AppComponent {
 
   play(){
     this.audioObj.play();
-    // console.log("Clicked Play");
+    //console.log("Clicked Play");
   }
 
   pause(){
