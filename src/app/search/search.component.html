@@ -1,4 +1,4 @@
-<section class="filter-wrapper">
+<!-- <section class="filter-wrapper">
     <div class="keyword-wrapper">
         <input [formControl]="inputField" type="text" placeholder="Search for Artists..." autofocus>
     </div>
@@ -10,4 +10,25 @@
             </li>
         </div>
     </ul>
-</section>
+</section> -->
+
+<h1>Need Music??</h1>
+<input type="text" name="searchStr" (keyup)="searchMusic($event)" placeholder="Search for Artists..." >
+<!-- <form>
+    <div>
+        <input type="text"  [(ngModel)]="searchStr"  placeholder="Search Music.....">
+    </div>
+</form> -->
+
+<div *ngIf="searchRes">
+    <div *ngFor="let res of searchRes">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <h4>{{res.name}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
