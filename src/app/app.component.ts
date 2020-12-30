@@ -29,7 +29,7 @@ export class AppComponent {
 
   files = [
     {
-      url : './assets/song1.mp3',
+      url : 'https://dropone.s3.ap-south-1.amazonaws.com/test/demo-audio.mpeg',
       name : 'Song 1'
     },
     {
